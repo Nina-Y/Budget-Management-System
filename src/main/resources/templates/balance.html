@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance</title>
+</head>
+<body>
+<h3>Balance</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Current Balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="'$' + ${balance}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+

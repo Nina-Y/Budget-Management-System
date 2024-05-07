@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income List</title>
+</head>
+<body>
+<h3>All Incomes</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Info</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="income : ${allIncomeslist}">
+        <td th:text="${income.id}"></td>
+        <td th:text="${income.sum}"></td>
+        <td th:text="${income.category}"></td>
+        <td th:text="${income.date}"></td>
+        <td th:text="${income.info}"></td>
+        <td><a th:href="@{'/deleteIncome/' + ${income.id}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

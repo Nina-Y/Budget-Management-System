@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css" th:href="@{/styles.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Details</title>
+</head>
+<body>
+<h3>Income Details</h3>
+<table class="detail-table">
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>ID</td>
+        <td th:text="${income.id}">Income ID</td>
+    </tr>
+    <tr>
+        <td>Amount</td>
+        <td th:text="${income.sum}">Amount</td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td th:text="${income.category}">Category</td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td th:text="${income.date}">Date</td>
+    </tr>
+    <tr>
+        <td>Info</td>
+        <td th:text="${income.info}">Info</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+
+

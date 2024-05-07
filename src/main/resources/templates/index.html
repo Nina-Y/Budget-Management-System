@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Management</title>
+</head>
+<body>
+<h1>Home Budget Management System</h1>
+<h2>Welcome!</h2>
+<div>
+    <button onclick="location.href='/balance'">Balance</button>
+    <button onclick="location.href='/incomeList'">Income List</button>
+    <button onclick="location.href='/expensesList'">Expenses List</button>
+    <button onclick="location.href='/addNewIncome'">Add Income</button>
+    <button onclick="location.href='/addNewExpense'">Add Expense</button>
+    <button onclick="location.href='/findIncome'">Find Income By ID</button>
+    <button onclick="location.href='/findExpense'">Find Expense By ID</button>
+</div>
+
+<h3>All Incomes</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Info</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="income : ${allIncomeslist}">
+        <td th:text="${income.id}"></td>
+        <td th:text="${income.sum}"></td>
+        <td th:text="${income.category}"></td>
+        <td th:text="${income.date}"></td>
+        <td th:text="${income.info}"></td>
+        <td><a th:href="@{'/deleteIncome/' + ${income.id}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>All Expenses</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Payment Method</th>
+        <th>Date</th>
+        <th>Info</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="expense : ${allExpenseslist}">
+        <td th:text="${expense.id}"></td>
+        <td th:text="${expense.sum}"></td>
+        <td th:text="${expense.category}"></td>
+        <td th:text="${expense.paymentMethod}"></td>
+        <td th:text="${expense.date}"></td>
+        <td th:text="${expense.info}"></td>
+        <td><a th:href="@{'/deleteExpense/' + ${expense.id}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Expense</title>
+    <!-- Include flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+<h3>Add New Expense</h3>
+<form action="/saveExp" method="post">
+    Amount: <input type="text" name="sum"><br>
+    Category: <input type="text" name="category"><br>
+    Payment Method: <input type="text" name="paymentMethod"><br>
+    Date and Time: <input type="text" name="date" id="date"><br>
+    Info: <input type="text" name="info"><br>
+    <input type="submit" value="Save Expense">
+</form>
+</body>
+</html>

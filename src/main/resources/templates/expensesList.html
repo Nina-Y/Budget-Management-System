@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses List</title>
+</head>
+<body>
+<h3>All Expenses</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Payment Method</th>
+        <th>Date</th>
+        <th>Info</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="expense : ${allExpenseslist}">
+        <td th:text="${expense.id}"></td>
+        <td th:text="${expense.sum}"></td>
+        <td th:text="${expense.category}"></td>
+        <td th:text="${expense.paymentMethod}"></td>
+        <td th:text="${expense.date}"></td>
+        <td th:text="${expense.info}"></td>
+        <td><a th:href="@{'/deleteExpense/' + ${expense.id}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

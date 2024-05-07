@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css" th:href="@{/styles.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Details</title>
+</head>
+<body>
+<h3>Expense Details</h3>
+<table class="detail-table">
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>ID</td>
+        <td th:text="${expense.id}">Expense ID</td>
+    </tr>
+    <tr>
+        <td>Amount</td>
+        <td th:text="${expense.sum}">Amount</td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td th:text="${expense.category}">Category</td>
+    </tr>
+    <tr>
+        <td>Payment method</td>
+        <td th:text="${expense.paymentMethod}">Payment method</td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td th:text="${expense.date}">Date</td>
+    </tr>
+    <tr>
+        <td>Info</td>
+        <td th:text="${expense.info}">Info</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
