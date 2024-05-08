@@ -1,7 +1,7 @@
 package javau9.budget.controllers;
 
 import jakarta.validation.Valid;
-import javau9.budget.models.Expenses;
+import javau9.budget.models.Expense;
 import javau9.budget.models.Income;
 import javau9.budget.services.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.Optional;
 
 @Controller
@@ -33,12 +30,6 @@ public class BudgetHomeController {
         return "incomeList";
     }
 
-    @GetMapping("/expensesList")
-    public String getExpensesList(Model model) {
-        model.addAttribute("allExpenseslist", budgetService.getExpensesList());
-        return "expensesList";
-    }
-
     @GetMapping("/addNewIncome")
     public String addNewIncome(Model model) {
         Income income = new Income();
@@ -51,19 +42,6 @@ public class BudgetHomeController {
         budgetService.saveInc(income);
         return "redirect:/";
     }
-
-    /*@GetMapping("/getIncome/{id}")
-    public String getIncomeById(@PathVariable(value = "id") Long id) {
-        budgetService.getIncomeById(id);
-        return "findIncome";
-    }*/
-
-    /*@GetMapping("/getIncome/{id}")
-    public String getIncomeById(@PathVariable(value = "id") Long id, Model model) {
-        Optional<Income> income = budgetService.getIncomeById(id);
-        model.addAttribute("income", income);
-        return "incomeDetails";
-    }*/
 
     @GetMapping("/findIncome")
     public String findIncome() {
@@ -119,15 +97,21 @@ public class BudgetHomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/expensesList")
+    public String getExpensesList(Model model) {
+        model.addAttribute("allExpenseslist", budgetService.getExpensesList());
+        return "expensesList";
+    }
+
     @GetMapping("/addNewExpense")
     public String addNewExpense(Model model) {
-        Expenses expense = new Expenses();
+        Expense expense = new Expense();
         model.addAttribute("expense", expense);
         return "newExpense";
     }
 
     @PostMapping("/saveExp")
-    public String saveExpense(@ModelAttribute("expense") Expenses expense) {
+    public String saveExpense(@ModelAttribute("expense") Expense expense) {
         budgetService.saveExp(expense);
         return "redirect:/";
     }
@@ -140,7 +124,7 @@ public class BudgetHomeController {
     @GetMapping("/getExpense")
     public String getExpenseById(@RequestParam("id") Long id, Model model) {
         try {
-            Optional<Expenses> expense = budgetService.getExpenseById(id);
+            Optional<Expense> expense = budgetService.getExpenseById(id);
             if (expense.isPresent()) {
                 model.addAttribute("expense", expense.get());
                 return "expenseDetails";
@@ -157,7 +141,7 @@ public class BudgetHomeController {
     // 1. first edit expense
     @GetMapping("/editExpense/{id}")
     public String showUpdateExpenseForm(@PathVariable("id") Long id, Model model) {
-        Optional<Expenses> expense = budgetService.getExpenseById(id);
+        Optional<Expense> expense = budgetService.getExpenseById(id);
         if (expense.isPresent()) {
             model.addAttribute("expense", expense.get());
             return "updateExpense";
@@ -170,11 +154,11 @@ public class BudgetHomeController {
     // 2. then update expense
     // persists the updated entity in the database
     @PostMapping("/updateExpense/{id}")
-    public String updateExpense(@PathVariable("id") Long id, @Valid Expenses expense,
+    public String updateExpense(@PathVariable("id") Long id, @Valid Expense expense,
                                BindingResult result, Model model) {
         if (result.hasErrors()) {
             expense.setId(id);
-            return "updateIncome";
+            return "updateExpense";
         }
         budgetService.saveExp(expense);
         return "redirect:/";

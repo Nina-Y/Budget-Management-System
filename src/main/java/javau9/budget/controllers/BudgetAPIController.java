@@ -1,6 +1,6 @@
 package javau9.budget.controllers;
 
-import javau9.budget.models.Expenses;
+import javau9.budget.models.Expense;
 import javau9.budget.models.Income;
 import javau9.budget.services.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class BudgetAPIController {
     }
 
     @GetMapping("/viewExpensesList") // localhost:portas/api/incomes
-    public List<Expenses> viewExpensesList() {
+    public List<Expense> viewExpensesList() {
         return budgetService.getExpensesList();
     }
 
@@ -53,8 +53,8 @@ public class BudgetAPIController {
     }
 
     @PostMapping("/expenseAdd")
-    public ResponseEntity<Expenses> addExpense(@RequestBody Expenses expense) {
-        Expenses savedExpense = budgetService.addExpense(expense);
+    public ResponseEntity<Expense> addExpense(@RequestBody Expense expense) {
+        Expense savedExpense = budgetService.addExpense(expense);
         return ResponseEntity.ok(savedExpense);
     }
 
@@ -69,12 +69,12 @@ public class BudgetAPIController {
     }
 
     @GetMapping("/expense/{id}")
-    public ResponseEntity<Expenses> getExpenseByID(@PathVariable Long id) {
+    public ResponseEntity<Expense> getExpenseByID(@PathVariable Long id) {
         return ResponseEntity.of(budgetService.getExpenseById(id));
     }
 
     @PutMapping("/expenseUpd/{id}")
-    public ResponseEntity<Expenses> updateIncome(@PathVariable Long id, @RequestBody Expenses expense) {
+    public ResponseEntity<Expense> updateIncome(@PathVariable Long id, @RequestBody Expense expense) {
         return ResponseEntity.of(budgetService.updateExpense(id, expense));
     }
 }

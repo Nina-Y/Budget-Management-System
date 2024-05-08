@@ -1,6 +1,6 @@
 package javau9.budget.services;
 
-import javau9.budget.models.Expenses;
+import javau9.budget.models.Expense;
 import javau9.budget.models.Income;
 
 import java.util.List;
@@ -14,12 +14,12 @@ public interface BudgetService {
     Optional<Income> updateIncome(Long id, Income income);
     void saveInc(Income income);
 
-    List<Expenses> getExpensesList();
-    Expenses addExpense(Expenses expense);
+    List<Expense> getExpensesList();
+    Expense addExpense(Expense expense);
     Boolean removeExpense(Long id);
-    Optional<Expenses> getExpenseById(Long id);
-    Optional<Expenses> updateExpense(Long id, Expenses expense);
-    void saveExp(Expenses expense);
+    Optional<Expense> getExpenseById(Long id);
+    Optional<Expense> updateExpense(Long id, Expense expense);
+    void saveExp(Expense expense);
 
     double getTotalIncome();
     double getTotalExpenses();

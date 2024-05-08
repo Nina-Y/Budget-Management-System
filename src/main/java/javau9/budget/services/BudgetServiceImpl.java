@@ -1,8 +1,8 @@
 package javau9.budget.services;
 
-import javau9.budget.models.Expenses;
+import javau9.budget.models.Expense;
 import javau9.budget.models.Income;
-import javau9.budget.repositories.ExpensesRepository;
+import javau9.budget.repositories.ExpenseRepository;
 import javau9.budget.repositories.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +16,14 @@ import java.util.Optional;
 public class BudgetServiceImpl implements BudgetService {
 
     IncomeRepository incomeRepository;
-    ExpensesRepository expensesRepository;
+    ExpenseRepository expenseRepository;
 
     @Autowired
-    public BudgetServiceImpl(IncomeRepository incomeRepository, ExpensesRepository expensesRepository) {
+    public BudgetServiceImpl(IncomeRepository incomeRepository, ExpenseRepository expenseRepository) {
         this.incomeRepository = incomeRepository;
-        this.expensesRepository = expensesRepository;
-        //seedDummyDataIncome(); // после первого запуска закомментить, иначе каждый раз будет добавляться
-        //seedDummyDataExpenses(); // -//-
+        this.expenseRepository = expenseRepository;
+        seedDummyDataIncome(); // после первого запуска закомментить, иначе каждый раз будет добавляться
+        seedDummyDataExpenses(); // -//-
     }
 
     public void seedDummyDataIncome() {
@@ -37,14 +37,13 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     public void seedDummyDataExpenses() {
-        List<Expenses> expenses = new ArrayList<>();
-        // expenses.add(new Expenses(100.0, "food", "cash", LocalDateTime.now(), "someInfo")); // as an option
-        expenses.add(new Expenses(100.0, "food", "cash", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expenses(300.0, "utility bills", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expenses(50.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expenses(100.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expenses(100.0, "food", "card", LocalDate.parse("2024-02-15"), "someInfo"));
-        expensesRepository.saveAll(expenses); // don't forget to add
+        List<Expense> expenses = new ArrayList<>();
+        expenses.add(new Expense(100.0, "food", "cash", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(300.0, "utility bills", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(50.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(100.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(100.0, "food", "card", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenseRepository.saveAll(expenses); // don't forget to add
     }
 
     @Override
@@ -60,7 +59,7 @@ public class BudgetServiceImpl implements BudgetService {
     @Override
     public Boolean removeIncome(Long id) {
         incomeRepository.deleteById(id);
-        return true; // ?
+        return true;
     }
 
     @Override
@@ -89,45 +88,45 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public List<Expenses> getExpensesList() {
-        return expensesRepository.findAll();
+    public List<Expense> getExpensesList() {
+        return expenseRepository.findAll();
     }
 
     @Override
-    public Expenses addExpense(Expenses expense) {
-        return expensesRepository.save(expense);
+    public Expense addExpense(Expense expense) {
+        return expenseRepository.save(expense);
     }
 
     @Override
     public Boolean removeExpense(Long id) {
-        expensesRepository.deleteById(id);
-        return true; // ?
+        expenseRepository.deleteById(id);
+        return true;
     }
 
     @Override
-    public Optional<Expenses> getExpenseById(Long id) {
-        return expensesRepository.findById(id);
+    public Optional<Expense> getExpenseById(Long id) {
+        return expenseRepository.findById(id);
     }
 
     @Override
-    public Optional<Expenses> updateExpense(Long id, Expenses expense) {
-        Optional<Expenses> existingExpense = expensesRepository.findById(id);
+    public Optional<Expense> updateExpense(Long id, Expense expense) {
+        Optional<Expense> existingExpense = expenseRepository.findById(id);
         if(existingExpense.isEmpty())
             return Optional.empty();
 
-        Expenses updatedExpense = existingExpense.get();
+        Expense updatedExpense = existingExpense.get();
         updatedExpense.setSum(expense.getSum());
         updatedExpense.setCategory(expense.getCategory());
         updatedExpense.setPaymentMethod(expense.getPaymentMethod());
         updatedExpense.setDate(expense.getDate());
         updatedExpense.setInfo(expense.getInfo());
 
-        return Optional.of(expensesRepository.save(updatedExpense));
+        return Optional.of(expenseRepository.save(updatedExpense));
     }
 
     @Override
-    public void saveExp(Expenses expense) {
-        expensesRepository.save(expense);
+    public void saveExp(Expense expense) {
+        expenseRepository.save(expense);
     }
 
     @Override
@@ -142,9 +141,9 @@ public class BudgetServiceImpl implements BudgetService {
 
     @Override
     public double getTotalExpenses() {
-        List<Expenses> expenses = expensesRepository.findAll();
+        List<Expense> expenses = expenseRepository.findAll();
         double sum = 0L;
-        for (Expenses exp : expenses) {
+        for (Expense exp : expenses) {
             sum += exp.getSum();
         }
         return sum;

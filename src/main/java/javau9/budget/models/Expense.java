@@ -6,11 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
 @Entity
-public class Expenses {
+public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +26,7 @@ public class Expenses {
     @NotBlank(message = "Info is mandatory")
     private String info;
 
-    public Expenses(double sum, String category, String paymentMethod, LocalDate date, String info) {
+    public Expense(double sum, String category, String paymentMethod, LocalDate date, String info) {
         this.sum = sum;
         this.category = category;
         this.paymentMethod = paymentMethod;
@@ -35,7 +34,7 @@ public class Expenses {
         this.info = info;
     }
 
-    public Expenses() {
+    public Expense() {
     }
 
     //<editor-fold desc="Getters/Setters">
@@ -90,7 +89,7 @@ public class Expenses {
 
     @Override
     public String toString() {
-        return "Expenses{" +
+        return "Expense{" +
                 "id=" + id +
                 ", sum=" + sum +
                 ", category=" + category +
