@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Management</title>
 </head>
 <body>
-<h1>Home Budget Management System</h1>
-<h2>Welcome!</h2>
+<h2>Home Budget Management System</h2>
+<h3>Welcome!</h3>
 <div>
     <button onclick="location.href='/balance'">Balance</button>
     <button onclick="location.href='/incomeList'">Income List</button>
@@ -29,6 +29,7 @@
         <th>Date</th>
         <th>Info</th>
         <th>Action</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
         <td th:text="${income.category}"></td>
         <td th:text="${income.date}"></td>
         <td th:text="${income.info}"></td>
+        <td><a th:href="@{'/editIncome/{id}'(id=${income.id})}">Update</a></td>
         <td><a th:href="@{'/deleteIncome/' + ${income.id}}">Delete</a></td>
     </tr>
     </tbody>
@@ -54,6 +56,7 @@
         <th>Date</th>
         <th>Info</th>
         <th>Action</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -64,6 +67,7 @@
         <td th:text="${expense.paymentMethod}"></td>
         <td th:text="${expense.date}"></td>
         <td th:text="${expense.info}"></td>
+        <td><a th:href="@{'/editExpense/{id}'(id=${expense.id})}">Update</a></td>
         <td><a th:href="@{'/deleteExpense/' + ${expense.id}}">Delete</a></td>
     </tr>
     </tbody>

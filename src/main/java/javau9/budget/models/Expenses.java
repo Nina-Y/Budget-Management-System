@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -14,10 +16,15 @@ public class Expenses {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull(message = "Sum is mandatory")
     private double sum;
+    @NotBlank(message = "Category is mandatory")
     private String category; // 1 - food, 2 - utility bills, 3 - insurance, 4 - other
+    @NotBlank(message = "Payment method is mandatory")
     private String paymentMethod; // 1 - cash, 2 - card, 3 - bankTransfer
+
     private LocalDate date;
+    @NotBlank(message = "Info is mandatory")
     private String info;
 
     public Expenses(double sum, String category, String paymentMethod, LocalDate date, String info) {

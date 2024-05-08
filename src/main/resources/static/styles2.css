@@ -1,6 +1,6 @@
 /* Set the base color of the page and apply a universal font style */
 body {
-    background-color: #E6E6FA; /* Pale Lavender */
+    background-color:  #E6E6FA; /* Lavender */
     font-family: Arial, sans-serif;
     color: darkblue; /* All text set to dark blue */
 }
@@ -16,7 +16,7 @@ button, input[type="submit"] {
     background-color: #90ee90; /* Light green */
     border: 2px solid #008000; /* Darker green border for better visibility */
     color: darkblue; /* Text color is dark blue */
-    padding: 7px 13px;
+    padding: 4px 13px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -36,7 +36,7 @@ div {
 table {
     margin: 0 auto; /* Center the table horizontally */
     border-collapse: collapse; /* Necessary for neat borders */
-    width: 50%; /* Set a width for the table */
+    width: 70%; /* Set a width for the table */
     background-color: #CCFFCC; /* Light green background */
 }
 
@@ -111,3 +111,4 @@ a {
     color: darkblue; /* Ensuring links are dark blue for consistency */
     text-decoration: none;
 }
+
