@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <link rel="stylesheet" type="text/css" href="../styles2.css">
     <title>Update Expense</title>
 </head>
 <body>
@@ -12,15 +12,15 @@
       th:object="${expense}"
       method="post">
     <label for="sum">Amount:</label>
-    <input type="number" th:field="*{sum}" id="sum" placeholder="enter sum"><br>
+    <input type="number" th:field="*{sum}" id="sum" placeholder="Enter amount"><br>
     <label for="category">Category:</label>
-    <input type="text" th:field="*{category}" id="category" placeholder="eg. food/ bills"><br>
+    <input type="text" th:field="*{category}" id="category" placeholder="Eg. groceries/ bills/ gift"><br>
     <label for="paymentMethod">Payment Method:</label>
-    <input type="text" th:field="*{paymentMethod}" id="paymentMethod" placeholder="eg. cash/ card/ bank transfer"><br>
+    <input type="text" th:field="*{paymentMethod}" id="paymentMethod" placeholder="Eg. cash/ card/ bank transfer"><br>
     <label for="date">Date:</label>
-    <input type="date" th:field="*{date}" id="date" placeholder="date"><br>
+    <input type="date" th:field="*{date}" id="date" placeholder="date"><br><br>
     <label for="info">Info:</label>
-    <input type="text" th:field="*{info}" id="info" placeholder="enter info"><br>
+    <input type="text" th:field="*{info}" id="info" placeholder="Enter info"><br>
     <input type="submit" value="Update Expense">
 </form>
 </body>

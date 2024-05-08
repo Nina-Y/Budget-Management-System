@@ -12,13 +12,13 @@
       th:object="${income}"
       method="post">
     <label for="sum">Amount:</label>
-    <input type="number" th:field="*{sum}" id="sum" placeholder="enter sum"><br>
+    <input type="number" th:field="*{sum}" id="sum" placeholder="Enter amount"><br>
     <label for="category">Category:</label>
-    <input type="text" th:field="*{category}" id="category" placeholder="eg. salary/ rental income"><br>
+    <input type="text" th:field="*{category}" id="category" placeholder="Eg. salary/ rental/ child benefit"><br>
     <label for="date">Date:</label>
-    <input type="date" th:field="*{date}" id="date" placeholder="date"><br>
+    <input type="date" th:field="*{date}" id="date" placeholder="date"><br><br>
     <label for="info">Info:</label>
-    <input type="text" th:field="*{info}" id="info" placeholder="enter info"><br>
+    <input type="text" th:field="*{info}" id="info" placeholder="Enter info"><br>
     <input type="submit" value="Update Income">
 </form>
 </body>

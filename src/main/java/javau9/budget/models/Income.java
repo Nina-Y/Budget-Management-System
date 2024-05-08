@@ -22,7 +22,6 @@ public class Income {
     private String category; // 1 - salary, 2 - rental income, 3 - child benefit, 4 - other
 
     private LocalDate date;
-    @NotBlank(message = "Info is mandatory")
     private String info;
 
     public Income(double sum, String category, LocalDate date, String info) {

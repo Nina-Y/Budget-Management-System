@@ -23,7 +23,6 @@ public class Expense {
     private String paymentMethod; // 1 - cash, 2 - card, 3 - bankTransfer
 
     private LocalDate date;
-    @NotBlank(message = "Info is mandatory")
     private String info;
 
     public Expense(double sum, String category, String paymentMethod, LocalDate date, String info) {
