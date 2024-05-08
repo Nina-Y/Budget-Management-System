@@ -5,10 +5,14 @@ import javau9.budget.models.Expense;
 import javau9.budget.models.Income;
 import javau9.budget.services.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,12 +25,18 @@ public class BudgetHomeController {
     public String viewHomePage(Model model) {
         model.addAttribute("allIncomeslist", budgetService.getIncomeList());
         model.addAttribute("allExpenseslist", budgetService.getExpensesList());
+        double totalIncome = budgetService.getTotalIncome();
+        double totalExpenses = budgetService.getTotalExpenses();
+        model.addAttribute("totalIncome", totalIncome);
+        model.addAttribute("totalExpenses", totalExpenses);
         return "index";
     }
 
     @GetMapping("/incomeList")
     public String getIncomeList(Model model) {
         model.addAttribute("allIncomeslist", budgetService.getIncomeList());
+        double totalIncome = budgetService.getTotalIncome();
+        model.addAttribute("totalIncome", totalIncome);
         return "incomeList";
     }
 
@@ -100,6 +110,8 @@ public class BudgetHomeController {
     @GetMapping("/expensesList")
     public String getExpensesList(Model model) {
         model.addAttribute("allExpenseslist", budgetService.getExpensesList());
+        double totalExpenses = budgetService.getTotalExpenses();
+        model.addAttribute("totalExpenses", totalExpenses);
         return "expensesList";
     }
 
@@ -175,5 +187,19 @@ public class BudgetHomeController {
         double balance = budgetService.getBalance();
         model.addAttribute("balance", balance);
         return "balance";
+    }
+
+    @GetMapping("/filterDates")
+    public String filterByDates(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+                                Model model) {
+        List<Income> filteredIncomes = budgetService.getIncomesBetweenDates(startDate, endDate);
+        List<Expense> filteredExpenses = budgetService.getExpensesBetweenDates(startDate, endDate);
+
+        model.addAttribute("allIncomeslist", filteredIncomes);
+        model.addAttribute("allExpenseslist", filteredExpenses);
+        model.addAttribute("totalIncome", filteredIncomes.stream().mapToDouble(Income::getSum).sum());
+        model.addAttribute("totalExpenses", filteredExpenses.stream().mapToDouble(Expense::getSum).sum());
+        return "index";
     }
 }

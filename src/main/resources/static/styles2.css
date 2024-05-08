@@ -1,114 +1,76 @@
-/* Set the base color of the page and apply a universal font style */
 body {
     background-color:  #E6E6FA; /* Lavender */
     font-family: Arial, sans-serif;
-    color: darkblue; /* All text set to dark blue */
+    color: darkblue;
 }
 
-/* Specific color modifications for headers and all text */
 h1, h2, h3 {
     text-align: center;
-    color: darkblue; /* Ensuring headers are also dark blue */
+    color: darkblue;
 }
 
-/* Uniform styles for all buttons */
 button, input[type="submit"] {
-    background-color: #90ee90; /* Light green */
-    border: 2px solid #008000; /* Darker green border for better visibility */
-    color: darkblue; /* Text color is dark blue */
+    background-color: #AAF0D1;
+    border: 2px solid #66CDAA;
+    color: darkblue;
     padding: 4px 13px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px; /* Ensuring uniform text size across all forms */
+    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px; /* Rounded corners for buttons */
 }
 
-/* Center the buttons div */
 div {
     text-align: center;
-    margin-bottom: 20px; /* Adds some space below the button group */
+    margin-bottom: 20px;
 }
 
-/* Styles for tables */
 table {
-    margin: 0 auto; /* Center the table horizontally */
-    border-collapse: collapse; /* Necessary for neat borders */
-    width: 70%; /* Set a width for the table */
-    background-color: #CCFFCC; /* Light green background */
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 60%;
+    background-color: #AAF0D1;
 }
 
-/* Headers and cells in tables */
 th, td {
-    padding: 3px; /* Adequate padding inside each cell */
-    border: 1px solid #ccc; /* Thin light gray border for separation */
-    text-align: center; /* Centering text within cells */
-    font-size: 14px; /* Ensuring readable text size */
+    padding: 3px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
 }
 
-/* Specific styling for table headers */
 thead th {
-    background-color: lightblue; /* Light blue background for contrast */
-    color: darkblue; /* Dark blue text for readability */
+    background-color: lightblue;
+    color: darkblue;
 }
 
-/* Body cells styling */
-tbody td {
-    background-color: lightgreen; /* Light green background for body cells */
-    color: darkblue; /* Ensuring text is dark blue for consistency */
-}
-
-/* Enhancing the visual appearance of table rows on hover */
-tbody tr:hover {
-    background-color: #f0f0f0; /* Light grey background on row hover for better interactivity */
-}
-
-/* Styles for detail tables in expenseDetails and incomeDetails */
-.detail-table {
-    width: 50%; /* Moderate width for detail information */
-    margin: 0 auto; /* Center the table horizontally */
-    border-collapse: collapse; /* Borders between rows and columns will be merged */
-    background-color: #CCFFCC; /* Light green background */
-}
-
-.detail-table th, .detail-table td {
-    padding: 8px; /* Comfortable padding */
-    border: 1px solid #ccc; /* Thin light gray border for each cell */
-    text-align: center; /* Centering text within the cells */
-    color: darkblue; /* Text color for better visibility */
-}
-
-.detail-table thead th {
-    background-color: lightblue; /* Light blue background for header cells */
-}
-
-/* Styles for form elements */
 form {
-    margin: 0 auto; /* Center the form horizontally */
-    width: 50%; /* Set a width for the form */
-    text-align: center; /* Center all form text */
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
 }
 
 input[type="number"],
 input[type="text"] {
-    display: block; /* Display form inputs as block elements */
-    margin: 10px auto; /* Center form inputs and add spacing */
-    width: 45%; /* Appropriate width for inputs */
-    padding: 10px; /* Padding for better text visibility */
-    text-align: center; /* Center text within input fields */
+    display: block;
+    margin: 10px auto;
+    width: 45%;
+    padding: 10px;
+    text-align: center;
 }
 
 label {
-    display: block; /* Make labels block level to match inputs */
-    text-align: center; /* Center labels */
-    margin: 5px; /* Spacing for aesthetic */
+    display: block;
+    text-align: center;
+    margin: 5px;
 }
 
 /* Styling links */
 a {
-    color: darkblue; /* Ensuring links are dark blue for consistency */
+    color: darkblue;
     text-decoration: none;
 }
 

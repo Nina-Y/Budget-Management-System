@@ -31,18 +31,18 @@ public class BudgetServiceImpl implements BudgetService {
         incomes.add(new Income(1500.0, "salary", LocalDate.parse("2024-02-10"), "someInfo"));
         incomes.add(new Income(500.0, "rental income", LocalDate.parse("2024-02-10"), "someInfo"));
         incomes.add(new Income(100.0, "child benefit", LocalDate.parse("2024-02-10"), "someInfo"));
-        incomes.add(new Income(200.0, "other", LocalDate.parse("2024-02-10"), "someInfo"));
-        incomes.add(new Income(300.0, "other", LocalDate.parse("2024-02-10"), "someInfo"));
+        incomes.add(new Income(200.0, "bonus", LocalDate.parse("2024-02-10"), "someInfo"));
+        incomes.add(new Income(300.0, "sale", LocalDate.parse("2024-02-10"), "someInfo"));
         incomeRepository.saveAll(incomes); // don't forget to add
     }
 
     public void seedDummyDataExpenses() {
         List<Expense> expenses = new ArrayList<>();
-        expenses.add(new Expense(100.0, "food", "cash", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(100.0, "groceries", "cash", LocalDate.parse("2024-02-15"), "IKI"));
         expenses.add(new Expense(300.0, "utility bills", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
         expenses.add(new Expense(50.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
         expenses.add(new Expense(100.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expense(100.0, "food", "card", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(100.0, "groceries", "card", LocalDate.parse("2024-02-15"), "Maxima"));
         expenseRepository.saveAll(expenses); // don't forget to add
     }
 
@@ -152,6 +152,16 @@ public class BudgetServiceImpl implements BudgetService {
     @Override
     public double getBalance() {
         return getTotalIncome() - getTotalExpenses();
+    }
+
+    @Override
+    public List<Income> getIncomesBetweenDates(LocalDate startDate, LocalDate endDate) {
+        return incomeRepository.findByDateBetween(startDate, endDate);
+    }
+
+    @Override
+    public List<Expense> getExpensesBetweenDates(LocalDate startDate, LocalDate endDate) {
+        return expenseRepository.findByDateBetween(startDate, endDate);
     }
 }
 

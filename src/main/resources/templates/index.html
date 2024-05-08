@@ -19,7 +19,28 @@
     <button onclick="location.href='/findExpense'">Find Expense By ID</button>
 </div>
 
-<h3>All Incomes</h3>
+<form action="/filterDates" method="get">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required><br>
+    <button type="submit">Show Totals</button><br>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Income For The Period</th>
+        <th>Expenses For The Period</th>
+    </tr>
+    </thead>
+    <tr>
+        <td><span th:text="${totalIncome}">0</span></td>
+        <td><span th:text="${totalExpenses}">0</span></td>
+    </tr><br>
+</table>
+
+<h3>Income</h3>
 <table>
     <thead>
     <tr>
@@ -44,8 +65,11 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <h4>Total Income: <span th:text="${totalIncome}">0</span></h4>
+</div>
 
-<h3>All Expenses</h3>
+<h3>Expenses</h3>
 <table>
     <thead>
     <tr>
@@ -72,5 +96,9 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <h4>Total Expenses: <span th:text="${totalExpenses}">0</span></h4>
+</div>
+
 </body>
 </html>
