@@ -29,11 +29,11 @@ public class BudgetServiceImpl implements BudgetService {
     public void seedDummyDataIncome() {
         List<Income> incomes = new ArrayList<>();
         incomes.add(new Income(1500.0, "salary", LocalDate.parse("2024-02-10"), "someInfo"));
-        incomes.add(new Income(500.0, "rental income", LocalDate.parse("2024-02-10"), "someInfo"));
+        incomes.add(new Income(500.0, "rental income", LocalDate.parse("2024-02-10"), "apartment"));
         incomes.add(new Income(100.0, "child benefit", LocalDate.parse("2024-02-10"), "someInfo"));
         incomes.add(new Income(200.0, "bonus", LocalDate.parse("2024-02-10"), "someInfo"));
-        incomes.add(new Income(300.0, "sale", LocalDate.parse("2024-02-10"), "someInfo"));
-        incomeRepository.saveAll(incomes); // don't forget to add
+        incomes.add(new Income(300.0, "freelance", LocalDate.parse("2024-02-10"), "someInfo"));
+        incomeRepository.saveAll(incomes);
     }
 
     public void seedDummyDataExpenses() {
@@ -41,9 +41,9 @@ public class BudgetServiceImpl implements BudgetService {
         expenses.add(new Expense(100.0, "groceries", "cash", LocalDate.parse("2024-02-15"), "IKI"));
         expenses.add(new Expense(300.0, "utility bills", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
         expenses.add(new Expense(50.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expense(100.0, "insurance", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
-        expenses.add(new Expense(100.0, "groceries", "card", LocalDate.parse("2024-02-15"), "Maxima"));
-        expenseRepository.saveAll(expenses); // don't forget to add
+        expenses.add(new Expense(25.0, "subscription", "bank transfer", LocalDate.parse("2024-02-15"), "someInfo"));
+        expenses.add(new Expense(100.0, "gift", "cash", LocalDate.parse("2024-02-15"), "bithday"));
+        expenseRepository.saveAll(expenses);
     }
 
     @Override

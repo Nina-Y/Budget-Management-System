@@ -1,5 +1,5 @@
 body {
-    background-color:  #E6E6FA; /* Lavender */
+    background-color:  #E6E6FA;
     font-family: Arial, sans-serif;
     color: darkblue;
 }
@@ -20,7 +20,7 @@ button, input[type="submit"] {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px; /* Rounded corners for buttons */
+    border-radius: 5px;
 }
 
 div {

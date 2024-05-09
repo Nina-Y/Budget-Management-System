@@ -196,10 +196,15 @@ public class BudgetHomeController {
         List<Income> filteredIncomes = budgetService.getIncomesBetweenDates(startDate, endDate);
         List<Expense> filteredExpenses = budgetService.getExpensesBetweenDates(startDate, endDate);
 
+        double totalIncome = filteredIncomes.stream().mapToDouble(Income::getSum).sum();
+        double totalExpenses = filteredExpenses.stream().mapToDouble(Expense::getSum).sum();
+        double balance = totalIncome - totalExpenses;
+
         model.addAttribute("allIncomeslist", filteredIncomes);
         model.addAttribute("allExpenseslist", filteredExpenses);
         model.addAttribute("totalIncome", filteredIncomes.stream().mapToDouble(Income::getSum).sum());
         model.addAttribute("totalExpenses", filteredExpenses.stream().mapToDouble(Expense::getSum).sum());
+        model.addAttribute("balance", balance);
         return "index";
     }
 }

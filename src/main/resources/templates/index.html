@@ -32,11 +32,13 @@
     <tr>
         <th>Income For The Period</th>
         <th>Expenses For The Period</th>
+        <th>Balance For The Period</th>
     </tr>
     </thead>
     <tr>
         <td><span th:text="${totalIncome}">0</span></td>
         <td><span th:text="${totalExpenses}">0</span></td>
+        <td><span th:text="${balance}">0</span></td>
     </tr><br>
 </table>
 
@@ -66,7 +68,7 @@
     </tbody>
 </table>
 <div>
-    <h4>Total Income: <span th:text="${totalIncome}">0</span></h4>
+    <h5>Income Total: <span th:text="${totalIncome}">0</span></h5>
 </div>
 
 <h3>Expenses</h3>
@@ -97,7 +99,7 @@
     </tbody>
 </table>
 <div>
-    <h4>Total Expenses: <span th:text="${totalExpenses}">0</span></h4>
+    <h5>Expenses Total: <span th:text="${totalExpenses}">0</span></h5>
 </div>
 
 </body>
