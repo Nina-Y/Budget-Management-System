@@ -36,9 +36,9 @@ public class BudgetAPIController {
     public ResponseEntity<Boolean> deleteIncome(@PathVariable Long id) {
         boolean deleted = budgetService.removeIncome(id);
         if (deleted) {
-            return ResponseEntity.ok().build(); // Grąžinamas 200 OK
+            return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.notFound().build(); // Grąžinamas 404 Not Found
+            return ResponseEntity.notFound().build();
         }
     }
 
