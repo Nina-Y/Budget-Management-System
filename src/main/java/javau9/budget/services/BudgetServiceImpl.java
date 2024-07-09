@@ -23,7 +23,7 @@ public class BudgetServiceImpl implements BudgetService {
         this.incomeRepository = incomeRepository;
         this.expenseRepository = expenseRepository;
         //seedDummyDataIncome(); // после первого запуска закомментить, иначе каждый раз будет добавляться
-        //seedDummyDataExpenses(); // -//-
+        //seedDummyDataExpenses();
     }
 
     public void seedDummyDataIncome() {
