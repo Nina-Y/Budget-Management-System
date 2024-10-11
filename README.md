@@ -1,7 +1,7 @@
 # Budget Management System
 
 ## Overview
-Simple Spring Boot project with connection to MySQL and UI (Thymeleaf).
+Spring Boot project with connection to MySQL and UI (Thymeleaf).
 The Budget Management System is a web application designed to help users manage their financial transactions. It allows users to track their incomes and expenses, add new entries, update existing ones, and delete unwanted records.
 
 ## Features
